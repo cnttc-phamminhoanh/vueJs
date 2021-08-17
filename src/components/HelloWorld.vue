@@ -1,5 +1,9 @@
 <template>
   <div class="hello">
+
+  <!--  <input type="text" :value="mess" @input="changeMessage">
+    <p> {{ message }}</p>
+  -->
     <h1>{{ msg }}</h1>
     <div class="employee-table">
       <table class="table table-dark table-hover">
@@ -28,8 +32,20 @@ export default {
   props: {
     msg: String,
     employees: Array,
-    propertyEmployee: Array
-  }
+    propertyEmployee: Array,
+    // mess: String,
+  },
+  // data() {
+  //   return {
+  //     message: '',
+  //   }
+  // },
+  // methods: {
+  //   changeMessage(event) {
+  //     this.message = event.target.value;
+  //     this.$emit('messageChanged', this.message)
+  //   }
+  // },
 }
 </script>
 

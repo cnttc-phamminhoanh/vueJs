@@ -1,7 +1,9 @@
 <template>
   <div id="app">
+    <!-- <TopMenu :msg="message"/> -->
+    <!-- <User  @messageChanged="message=$event" /> -->
+
     <TopMenu />
-    
     <router-view/>
   </div>
 </template>
@@ -9,12 +11,19 @@
 <script>
 
 import TopMenu from './components/TopMenu.vue';
+// import User from './components/user/User.vue';
 
 export default {
   name: 'App',
   components: {
     TopMenu,
-  }
+    // User,
+  },
+  // data() {
+  //   return {
+  //     message: '',
+  //   }
+  // }
 }
 </script>
 

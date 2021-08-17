@@ -18,6 +18,10 @@
                 <li class="nav-item">
                     <router-link class="nav-link" to="/useredit">Go to userEdit</router-link>
                 </li>
+
+                <!-- <li class="nav-item">
+                    <router-link class="nav-link" to="/useredit">{{ msg }}</router-link>
+                </li> -->
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -33,7 +37,22 @@
 import 'bootstrap/js/dist/dropdown';
 
 export default {
-    name: 'TopMenu'
+    name: 'TopMenu',
+    // props: {
+    //     msg: String,
+    // },
+
+    // đoạn comment dưới cho bus event
+    // data() {
+    //     return {
+    //         message: '',
+    //     }
+    // },
+    // mounted() {
+    //     this.$root.$on("messageChanged", (msg) => {
+    //         this.message = msg;
+    //     })
+    // },
 }
 </script>
 <style scoped>

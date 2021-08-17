@@ -7,9 +7,15 @@
                 <span v-if="isShow">Hide</span>
                 <span v-else>Show</span>
             </button>
-            </div>
-            <HelloWorld v-if="isShow" :msg="welcome" :employees="employees" :propertyEmployee="Object.keys(employees[0])"/>
         </div>
+
+        <!--<p>{{ message }}</p>
+
+        :mess="message" @messageChanged="message=$event" //bỏ vô HelloWorld
+        -->
+
+        <HelloWorld v-if="isShow" :msg="welcome" :employees="employees" :propertyEmployee="Object.keys(employees[0])" />
+    </div>
 </template>
 <script>
 
@@ -23,6 +29,7 @@ export default {
     },
     data() {
         return {
+            // message: 'This is a great message',
             isShow: false,
             welcome: 'Welcome to Employees Table',
             employees: [
