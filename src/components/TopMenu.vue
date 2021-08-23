@@ -1,40 +1,55 @@
 <template>
     <div class="top-menu">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <router-link class="nav-link" to="/">Go to home</router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link class="nav-link" to="/user">Go to user</router-link>
-                </li>
-                
-                <li class="nav-item">
-                    <router-link class="nav-link" to="/useredit">Go to userEdit</router-link>
-                </li>
+        <b-navbar toggleable="lg" type="dark" variant="success" class="navbar-horizontal">
+            <b-navbar-brand href="#">MakeUpSeNo</b-navbar-brand>
 
-                <!-- <li class="nav-item">
-                    <router-link class="nav-link" to="/useredit">{{ msg }}</router-link>
-                </li> -->
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            </div>
-        </div>
-        </nav>
+            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+            <b-collapse id="nav-collapse" is-nav>
+                <b-navbar-nav class="ml-auto">
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/">Home</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/user">User</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/useredit">UserEdit</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="">About</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="">Contact</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="">Hobby</router-link>
+                    </li>
+
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="">Products</router-link>
+                    </li>
+
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/employees">Employees</router-link>
+                    </li>
+
+                    <div class="in-but">
+                    
+                        <div class="w">
+                            <b-form-input v-model="text" placeholder="Enter name to search"></b-form-input>
+                            <b-button variant="dark">Search</b-button>
+                        </div>
+                        
+                    </div>
+                </b-navbar-nav>
+            </b-collapse>
+        </b-navbar>
     </div>
 </template>
 
 <script>
-import 'bootstrap/js/dist/dropdown';
+// import 'bootstrap/js/dist/dropdown';
 
 export default {
     name: 'TopMenu',
@@ -43,11 +58,11 @@ export default {
     // },
 
     // đoạn comment dưới cho bus event
-    // data() {
-    //     return {
-    //         message: '',
-    //     }
-    // },
+    data() {
+        return {
+            text: '',
+        }
+    },
     // mounted() {
     //     this.$root.$on("messageChanged", (msg) => {
     //         this.message = msg;
@@ -56,5 +71,17 @@ export default {
 }
 </script>
 <style scoped>
-    
+    .top-menu > nav > a {
+        margin-left: 30px;
+    }
+    .in-but input {
+       
+    }
+    .in-but button {
+        margin-left: 5px;
+    }
+    .w {
+        display: flex;
+        margin-left: 180px;
+    }
 </style>

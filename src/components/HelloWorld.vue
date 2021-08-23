@@ -22,6 +22,8 @@
           </tr>
         </tbody>
       </table>
+
+      <b-table striped hover :items="employees"></b-table>
     </div>
   </div>
 </template>
