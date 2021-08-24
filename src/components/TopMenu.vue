@@ -1,6 +1,6 @@
 <template>
     <div class="top-menu">
-        <b-navbar toggleable="lg" type="dark" variant="success" class="navbar-horizontal">
+        <b-navbar toggleable="lg" type = "dark" variant="success" class="navbar-horizontal">
             <b-navbar-brand href="#">MakeUpSeNo</b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -27,7 +27,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <router-link class="nav-link" to="">Products</router-link>
+                        <router-link class="nav-link" to="/products">Products</router-link>
                     </li>
 
                     <li class="nav-item">
