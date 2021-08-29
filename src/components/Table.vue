@@ -1,37 +1,45 @@
 <template>
-  <div class="table">
-    <h1>{{ msg }}</h1>
-    <div class="employee-table">
-        <b-table striped hover :items="employees"></b-table>
-    </div>
-  </div>
-</template>
+    <div class="overflow-auto">
+        <b-table striped hover
+            id="my-table"
+            :items="items"
+            :per-page="perPage"
+            :current-page="currentPage"
+            small
+        ></b-table>
 
+        <div class="numberPage">
+            <b-pagination
+                v-model="currentPage"
+                :total-rows="rows"
+                :per-page="perPage"
+                aria-controls="my-table"
+            ></b-pagination>
+        </div>
+    </div>
+</template>
 <script>
 export default {
-  name: 'Table',
-  props: {
-    msg: String,
-    employees: Array,
-  },
-  // data() {
-  //   return {
-  //     message: '',
-  //   }
-  // },
-  // methods: {
-  //   changeMessage(event) {
-  //     this.message = event.target.value;
-  //     this.$emit('messageChanged', this.message)
-  //   }
-  // },
+    name: 'Table',
+    data () {
+        return {
+            currentPage: 1,
+            perPage: 4,
+        }
+    },
+    props: {
+        items: Array,
+    },
+    computed: {
+      rows() {
+        return this.items.length;
+      }
+    },
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  .employee-table {
-    width: 80%; 
-    margin: 40px auto; 
-  }
+<style scope>
+    .numberPage {
+        margin: 50px auto 0 auto;
+        width: 232px
+    }
 </style>

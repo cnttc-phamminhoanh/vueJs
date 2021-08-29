@@ -9,17 +9,19 @@
             </button>
         </div>
 
-        <Table v-if="isShow" :msg="welcome" :employees="employees" />
+        
+        <PaginationTable v-if="isShow" :items="employees" />
     </div>
 </template>
 <script>
 
-import Table from './Table.vue'
+
+import PaginationTable from './PaginationTable.vue';
 
 export default {
     name: 'Employees',
     components: {
-        Table
+        PaginationTable,
     },
     data() {
         return {
@@ -51,7 +53,13 @@ export default {
                 id: 2063637894,
                 name: 'MCK',
                 address:'k15/12 Phú Lộc 4, Đà Nẵng'
-                }
+                },
+                {
+                id: 2063634586,
+                name: 'Yuno Big Boy',
+                address:'15 Đỗ Quang, Đà Nẵng'
+                },
+                
             ],
         }       
     }
@@ -64,5 +72,9 @@ export default {
         padding: 5px 5px;
         border: solid 2px #54b883;
         border-radius: 5px;
+    }
+    .employees {
+        width: 70%; 
+        margin: 60px auto; 
     }
 </style>

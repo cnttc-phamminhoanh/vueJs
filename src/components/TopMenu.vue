@@ -38,7 +38,7 @@
                     
                         <div class="w">
                             <b-form-input v-model="text" placeholder="Enter name to search"></b-form-input>
-                            <b-button variant="dark">Search</b-button>
+                            <b-button variant="dark" @click="changeSearch">Search</b-button>
                         </div>
                         
                     </div>
@@ -63,6 +63,12 @@ export default {
             text: '',
         }
     },
+    methods: {
+        changeSearch() {
+            this.$root.$emit("searchChanged",this.text);
+            // this.$router.push('/layoutcard');
+        },
+    }
     // mounted() {
     //     this.$root.$on("messageChanged", (msg) => {
     //         this.message = msg;
