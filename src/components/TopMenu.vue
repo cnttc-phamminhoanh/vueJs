@@ -33,16 +33,12 @@
                     <li class="nav-item">
                         <router-link class="nav-link" to="/employees">Employees</router-link>
                     </li>
-
-                    <div class="in-but">
                     
-                        <div class="w">
-                            <b-form-input v-model="text" placeholder="Enter name to search"></b-form-input>
-                            <b-button variant="dark" @click="changeSearch">Search</b-button>
-                        </div>
-                        
-                    </div>
                 </b-navbar-nav>
+
+                <div class="input">
+                    <b-form-input v-model="text" placeholder="Enter name to search"></b-form-input>
+                </div>
             </b-collapse>
         </b-navbar>
     </div>
@@ -63,12 +59,11 @@ export default {
             text: '',
         }
     },
-    methods: {
-        changeSearch() {
-            this.$root.$emit("searchChanged",this.text);
-            // this.$router.push('/layoutcard');
-        },
-    }
+    watch: {
+        text: function(value) {
+            this.$root.$emit("searchChanged",value);
+        }
+    },
     // mounted() {
     //     this.$root.$on("messageChanged", (msg) => {
     //         this.message = msg;
@@ -80,8 +75,9 @@ export default {
     .top-menu > nav > a {
         margin-left: 30px;
     }
-    .in-but input {
-       
+    .input {
+        width: 70%;
+        margin: 0 80px;
     }
     .in-but button {
         margin-left: 5px;

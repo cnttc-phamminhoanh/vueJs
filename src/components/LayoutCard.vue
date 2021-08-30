@@ -2,17 +2,16 @@
 
     <div class="layoutCard">
         <b-container class="bv-example-row">
-
             <template v-if="textSearch==''">
                 <b-row v-for="(n, i) in Math.ceil(employees.length/3)" :key="i">
                     <b-col v-for="(item, index) in employees.slice((n-1)*perRow, n*perRow)" :key="index">
                         <b-card
                             :title="item.name"
-                            img-src="https://picsum.photos/300/200/?image=25"
+                            img-src="https://picsum.photos/200/100/?image=25"
                             img-alt="Image"
                             img-top
                             tag="article"
-                            style="max-width: 20rem;"
+                            style="max-width: 17rem;"
                             class="mb-2">
                             <b-card-text>
                                 {{ item.address }}
@@ -33,7 +32,7 @@
                             img-alt="Image"
                             img-top
                             tag="article"
-                            style="max-width: 20rem;"
+                            style="max-width: 15rem;"
                             class="mb-2">
                             <b-card-text>
                                 {{ item.address }}
@@ -98,7 +97,7 @@ export default {
     computed: {
         filterName: function() {
             return this.employees.filter((emp) => { 
-                return emp.name.toLowerCase().match(this.textSearch.toLowerCase());
+                return emp.name.toLowerCase().indexOf(this.textSearch.toLowerCase()) > -1 ;
             });
         },
     },
@@ -110,5 +109,17 @@ export default {
     .layoutCard {
         margin: 60px auto;
         width: 60%;
+        
+    }
+    .col article h4 {
+        font-size: 20px;
+    }
+    .col article {
+        border-color: #198754;
+        font-size: 15px;
+    }
+    .col article .card-body a {
+        background-color: #198754;
+        font-size: 15px;
     }
 </style>
