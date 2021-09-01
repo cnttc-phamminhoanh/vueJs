@@ -1,115 +1,55 @@
 <template>
-
     <div class="layoutCard">
         <b-container class="bv-example-row">
-            <template v-if="textSearch==''">
-                <b-row v-for="(n, i) in Math.ceil(employees.length/3)" :key="i">
-                    <b-col v-for="(item, index) in employees.slice((n-1)*perRow, n*perRow)" :key="index">
-                        <b-card
-                            :title="item.name"
-                            img-src="https://picsum.photos/200/100/?image=25"
-                            img-alt="Image"
-                            img-top
-                            tag="article"
-                            style="max-width: 17rem;"
-                            class="mb-2">
-                            <b-card-text>
-                                {{ item.address }}
-                            </b-card-text>
+            <b-row v-for="(n, i) in Math.ceil(employees.length/3)" :key="i">
+                <b-col v-for="(item, index) in employees.slice((n-1)*perRow, n*perRow)" :key="index">
+                    <b-card
+                        :title="item.name"
+                        img-src="https://picsum.photos/200/100/?image=25"
+                        img-alt="Image"
+                        img-top
+                        tag="article"
+                        style="max-width: 17rem;"
+                        class="mb-2">
+                        <b-card-text>
+                            {{ item.address }}
+                        </b-card-text>
 
-                            <b-button href="#" variant="success">Go somewhere</b-button>
-                        </b-card>
-                    </b-col>
-                </b-row>
-            </template>
-
-            <template v-else>
-                <b-row v-for="(n, i) in Math.ceil(filterName.length/3)" :key="i">
-                    <b-col v-for="(item, index) in filterName.slice((n-1)*perRow, n*perRow)" :key="index">
-                        <b-card
-                            :title="item.name"
-                            img-src="https://picsum.photos/300/200/?image=25"
-                            img-alt="Image"
-                            img-top
-                            tag="article"
-                            style="max-width: 15rem;"
-                            class="mb-2">
-                            <b-card-text>
-                                {{ item.address }}
-                            </b-card-text>
-
-                            <b-button href="#" variant="success">Go somewhere</b-button>
-                        </b-card>
-                    </b-col>
-                </b-row>
-            </template>
-
-        </b-container>
+                        <b-button href="#" @click="showDetail(item)" variant="success">Go somewhere</b-button>
+                            
+                    </b-card>
+                </b-col>
+            </b-row>
+            <PopupDetail />
+        </b-container>      
     </div>
 </template>
 
 <script>
+
+import PopupDetail from './PopupDetail.vue';
+
 export default {
     name: 'LayoutCard',
-    data() {
-        return {
-            textSearch: '',
-            employees: [
-                {
-                    id: 3120417016,
-                    name: 'Phạm Minh Oanh',
-                    address:'K130/2 Ông Ích Đường, Đà Nẵng'
-                },
-                {
-                    id: 3120417016,
-                    name: 'Phạm Minh Oanh',
-                    address:'K130/2 Ông Ích Đường, Đà Nẵng'
-                },
-                {
-                    id: 3120417016,
-                    name: 'Phạm Minh Tuấn',
-                    address:'K130/2 Ông Ích Đường, Đà Nẵng'
-                },
-                {
-                    id: 3120417016,
-                    name: 'Phạm Minh Chính',
-                    address:'K130/2 Ông Ích Đường, Đà Nẵng'
-                },
-                {
-                    id: 3120417016,
-                    name: 'Sử Minh Thành',
-                    address:'K130/2 Ông Ích Đường, Đà Nẵng'
-                },
-                {
-                    id: 3120417016,
-                    name: 'Nguyễn Nhật Anh',
-                    address:'K130/2 Ông Ích Đường, Đà Nẵng'
-                },
-            ],
-            perRow: 3,
+    components: {
+        PopupDetail,
+    },
+    props: {
+        employees: Array,
+        perRow: Number,
+    },
+    methods: {
+        showDetail: function(data) {
+            this.$root.$emit("clickPopUp",data);
         }
     },
-    beforeMount() {
-        this.$root.$on("searchChanged", (search) => {
-            this.textSearch = search;
-        })
-    },
-    computed: {
-        filterName: function() {
-            return this.employees.filter((emp) => { 
-                return emp.name.toLowerCase().indexOf(this.textSearch.toLowerCase()) > -1 ;
-            });
-        },
-    },
 }
-
 </script>
 
 <style scope>
     .layoutCard {
         margin: 60px auto;
-        width: 60%;
-        
+        width: 80%;
     }
     .col article h4 {
         font-size: 20px;

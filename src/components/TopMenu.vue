@@ -37,7 +37,7 @@
                 </b-navbar-nav>
 
                 <div class="input">
-                    <b-form-input v-model="text" placeholder="Enter name to search"></b-form-input>
+                    <b-form-input v-model="text" :value="text" placeholder="Enter name to search"></b-form-input>
                 </div>
             </b-collapse>
         </b-navbar>

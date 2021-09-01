@@ -4,7 +4,7 @@
     <!-- <User  @messageChanged="message=$event" /> -->
 
     <TopMenu />
-    <LayoutCard />
+    <!-- <LayoutCard /> -->
     <router-view/>
   </div>
 </template>
@@ -12,14 +12,15 @@
 <script>
 
 import TopMenu from './components/TopMenu.vue';
-import LayoutCard from './components/LayoutCard.vue';
+// import LayoutCard from './components/LayoutCard.vue';
+
 // import User from './components/user/User.vue';
 
 export default {
   name: 'App',
   components: {
     TopMenu,
-    LayoutCard,
+    // LayoutCard,
     // User,
   },
   // data() {
@@ -27,6 +28,23 @@ export default {
   //     message: '',
   //   }
   // }
+  data() {
+    return {
+      
+    }
+  },  
+  // computed: {
+  //   filterName: function() {
+  //     return this.employees.filter((emp) => { 
+  //       return emp.name.toLowerCase().indexOf(this.textSearch.toLowerCase()) > -1 ;
+  //     });
+  //   },     
+  // },
+  // beforeMount() {
+  //   this.$root.$on("searchChanged", (search) => {
+  //     this.textSearch = search;
+  //   });
+  // },
 }
 </script>
 

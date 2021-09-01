@@ -1,5 +1,13 @@
 <template>
     <div class="products">
+        
+        <template v-if="textSearch==''">
+            <LayoutCard :employees="employees" :perRow="perRow"/>
+        </template>
+        <template v-else>
+            <LayoutCard :employees="filterName" :perRow="perRow"/>
+        </template>
+
         <LeftRightProduct :products="products" /> 
         <PaginationTable :items="items" />
     </div>
@@ -8,15 +16,18 @@
 
 import LeftRightProduct from './LeftRightProduct.vue';
 import PaginationTable from '../PaginationTable.vue';
+import LayoutCard from '../LayoutCard.vue';
 
 export default {
     name: 'Products',
     components: {
         LeftRightProduct,
         PaginationTable,
+        LayoutCard,
     },
     data() {
         return {
+            textSearch: '',
             products: [
                 {
                     img: 'https://placekitten.com/200/200',
@@ -39,8 +50,54 @@ export default {
                 { id: 9, name: 'Dior Rouge 999 Matte', brand: 'Christian Dior S.A ( Dior)', price: '800.000 VNĐ' },
                 { id: 10, name: '3CE Lily Maymac Holy Rose màu 118', brand: '3CE', price: '350.000 VNĐ' },
             ],
+            employees: [
+                {
+                    id: 3120417011,
+                    name: 'Phạm Minh Oanh',
+                    address:'K130/2 Ông Ích Đường, Đà Nẵng'
+                },
+                {
+                    id: 3120417014,
+                    name: 'Phạm Minh Oanh',
+                    address:'K130/2 Ông Ích Đường, Đà Nẵng'
+                },
+                {
+                    id: 3120417018,
+                    name: 'Phạm Minh Tuấn',
+                    address:'K130/2 Ông Ích Đường, Đà Nẵng'
+                },
+                {
+                    id: 3120417013,
+                    name: 'Phạm Minh Chính',
+                    address:'K130/2 Ông Ích Đường, Đà Nẵng'
+                },
+                {
+                    id: 3120417012,
+                    name: 'Sử Minh Thành',
+                    address:'K130/2 Ông Ích Đường, Đà Nẵng'
+                },
+                {
+                    id: 3120417016,
+                    name: 'Nguyễn Nhật Anh',
+                    address:'K130/2 Ông Ích Đường, Đà Nẵng'
+                },
+            ],
+            perRow: 3,
         }
-    }
+    },
+    computed: {
+        filterName: function() {
+            return this.employees.filter((emp) => { 
+                return emp.name.toLowerCase().indexOf(this.textSearch.toLowerCase()) > -1 ;
+            });
+        },
+        
+    },
+    beforeMount() {
+        this.$root.$on("searchChanged", (search) => {
+            this.textSearch = search;
+        });
+    },
 }
 </script>
 <style scoped>
